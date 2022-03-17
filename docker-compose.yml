@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  workspace:
+    build: ./docker/alpine
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${DATA_SRC:-..}:/var/www/html
+
+  nginx:
+    image: nginx:alpine
+    depends_on:
+      - workspace
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/templates:/etc/nginx/templates
+      - ${DATA_SRC:-..}:/var/www/html
+
+  mariadb:
+    image: mariadb:10.6.1
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS:-root}
+      MARIADB_USER: ${DB_USER:-default}
+      MARIADB_PASSWORD: ${DB_PASS:-secret}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - ${DB_DATA:-./datadir}:/var/lib/mysql
+      - ./docker/mariadb:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: adminer:4.8.0
+    depends_on:
+      - mariadb
+    environment:
+      ADMINER_DEFAULT_SERVER: mariadb
+    ports:
+      - "8080:8080"
+

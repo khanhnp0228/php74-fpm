@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS `wordpress` COLLATE 'utf8_general_ci';
+
+GRANT ALL ON *.* TO 'default'@'%' ;
+
+FLUSH PRIVILEGES ;

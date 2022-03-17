@@ -1,0 +1,5 @@
+datadir
+.env
+createdb.sql
+
+docker/nginx/templates/*.template
