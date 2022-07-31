@@ -5,7 +5,7 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - ${DATA_SRC:-..}:/var/www/html
+      - ${DATA_SRC:-../src}:/var/www/html
 
   nginx:
     image: nginx:alpine
@@ -14,8 +14,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./docker/nginx/templates:/etc/nginx/templates
-      - ${DATA_SRC:-..}:/var/www/html
+      - ./docker/nginx/templates:/etc/nginx/templates:delegated
+      - ${DATA_SRC:-../src}:/var/www/html
 
   mariadb:
     image: mariadb:10.6.1
@@ -26,8 +26,8 @@ services:
     ports:
       - "${DB_PORT:-3306}:3306"
     volumes:
-      - ${DB_DATA:-./datadir}:/var/lib/mysql
-      - ./docker/mariadb:/docker-entrypoint-initdb.d
+      - ${DB_DATA:-./datadir}:/var/lib/mysql:delegated
+      - ./docker/mariadb:/docker-entrypoint-initdb.d:delegated
 
   adminer:
     image: adminer:4.8.0
@@ -38,3 +38,13 @@ services:
     ports:
       - "8080:8080"
 
+  wpcli:
+    image: wordpress:cli-php7.4
+    depends_on:
+      - mariadb
+      - workspace
+    user: "1000"
+    entrypoint: wp  
+    command: "--info"
+    volumes:
+      - ${DATA_SRC:-../src}:/var/www/html
