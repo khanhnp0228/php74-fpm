@@ -14,7 +14,7 @@ docker-compose run --rm wpcli --path=`path/to/wordpress` WPCLI_COMMANDS
 ### WP-CLI: CREATE CONFIG FILE (wp-config.php)
 
 ```
-docker-compose run --rm wpcli config create --path=[PROJECT_NAME] --dbname=[DB_NAME] --dbuser=root --dbpass=root --dbhost=mariadb
+docker-compose run --rm wpcli config create --path=[PROJECT_NAME] --dbprefix=[TABLE_PREFIX] --dbname=[DB_NAME] --dbuser=root --dbpass=root --dbhost=mariadb
 ```
 
 ### WP-CLI: CREATE DB
