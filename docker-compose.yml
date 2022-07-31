@@ -19,6 +19,7 @@ services:
 
   mariadb:
     image: mariadb:10.6.1
+    command: --max_allowed_packet=32505856
     environment:
       MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS:-root}
       MARIADB_USER: ${DB_USER:-default}
