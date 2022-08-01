@@ -52,6 +52,3 @@ services:
     command: "--info"
     volumes:
       - ${DATA_SRC:-../src}:/var/www/html
-    environment:
-      - PHP_MEMORY_LIMIT=-1
-      - COMPOSER_MEMORY_LIMIT=-1

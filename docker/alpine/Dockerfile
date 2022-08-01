@@ -1,4 +1,9 @@
 FROM php:7.4.19-fpm-alpine
+
+# Use the default production configuration
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN cd /usr/local/etc/php/conf.d/ && \
+    echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-ram-limit.ini
 RUN apk add --no-cache \
     freetype \
     libpng \
