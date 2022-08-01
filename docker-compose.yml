@@ -6,6 +6,9 @@ services:
       - "9000:9000"
     volumes:
       - ${DATA_SRC:-../src}:/var/www/html
+    environment:
+      - PHP_MEMORY_LIMIT=-1
+      - COMPOSER_MEMORY_LIMIT=-1
 
   nginx:
     image: nginx:alpine
@@ -45,7 +48,10 @@ services:
       - mariadb
       - workspace
     user: "1000"
-    entrypoint: wp  
+    entrypoint: wp
     command: "--info"
     volumes:
       - ${DATA_SRC:-../src}:/var/www/html
+    environment:
+      - PHP_MEMORY_LIMIT=-1
+      - COMPOSER_MEMORY_LIMIT=-1
