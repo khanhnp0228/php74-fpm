@@ -17,8 +17,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./docker/nginx/templates:/etc/nginx/templates:delegated
-      - ${DATA_SRC:-../src}:/var/www/html
+      - ./docker/nginx/templates:/etc/nginx/templates:cached
+      - ${DATA_SRC:-../src}:/var/www/html:cached
 
   mariadb:
     image: mariadb:10.6.1
@@ -31,7 +31,7 @@ services:
       - "${DB_PORT:-3306}:3306"
     volumes:
       - ${DB_DATA:-./datadir}:/var/lib/mysql:delegated
-      - ./docker/mariadb:/docker-entrypoint-initdb.d:delegated
+      - ./docker/mariadb:/docker-entrypoint-initdb.d:cached
 
   adminer:
     image: adminer:4.8.0
@@ -51,4 +51,4 @@ services:
     entrypoint: wp
     command: "--info"
     volumes:
-      - ${DATA_SRC:-../src}:/var/www/html
+      - ${DATA_SRC:-../src}:/var/www/html:delegated
