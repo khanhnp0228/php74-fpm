@@ -18,6 +18,7 @@ services:
       - "80:80"
     volumes:
       - ./docker/nginx/templates:/etc/nginx/templates:cached
+      - ./docker/nginx/log:/var/log/nginx:delegated
       - ${DATA_SRC:-../src}:/var/www/html:cached
 
   mariadb:
