@@ -23,6 +23,31 @@ docker-compose run --rm wpcli config create --path=[PROJECT_NAME] --dbprefix=[TA
 docker-compose run --rm wpcli db create --path=[PROJECT_NAME]
 ```
 
+### WP-CLI: HASH PASSWORD
+
+```
+docker-compose run --rm wpcli eval "echo wp_hash_password('[CLEAR_PASSWORD]');" --path=[PROJECT_NAME]
+```
+
+### WP-CLI: CREATE USER WITH [CLEAR_PASSWORD]
+
+```
+docker-compose run --rm wpcli user create [USERNAME] [YOUR_EMAIL] --role=administrator --user_pass=[CLEAR_PASSWORD] --path=[PROJECT_NAME]
+```
+
+### WP-CLI: CREATE USER WITH PASSWORD GENERATE
+
+```
+docker-compose run --rm wpcli user create [USERNAME] [YOUR_EMAIL] --role=administrator --path=[PROJECT_NAME]
+```
+
+### WP-CLI: UPDATE USER PASSWORD
+
+```
+docker-compose run --rm wpcli user update [USERNAME] --user_pass=<CLEAR_PASSWORD> --path=[PROJECT_NAME]
+```
+
+
 ### WP-CLI: REGENERATE THUMBNAILS
 
 ```
