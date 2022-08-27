@@ -47,6 +47,11 @@ docker-compose run --rm wpcli user create [USERNAME] [YOUR_EMAIL] --role=adminis
 docker-compose run --rm wpcli user update [USERNAME] --user_pass=<CLEAR_PASSWORD> --path=[PROJECT_NAME]
 ```
 
+### WP-CLI: SEARCH & REPLACE
+
+```
+docker-compose run --rm wpcli user search-replace '[OLD_STR]' '[NEW_STR]' --all-tables --path=[PROJECT_NAME]
+```
 
 ### WP-CLI: REGENERATE THUMBNAILS
 
