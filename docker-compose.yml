@@ -6,6 +6,7 @@ services:
       - "9000:9000"
     volumes:
       - ${DATA_SRC:-../src}:/var/www/html
+      - ./docker/xdebug/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini:cached
     environment:
       - PHP_MEMORY_LIMIT=-1
       - COMPOSER_MEMORY_LIMIT=-1
@@ -18,7 +19,7 @@ services:
       - "80:80"
     volumes:
       - ./docker/nginx/templates:/etc/nginx/templates:cached
-      - ./docker/nginx/log:/var/log/nginx:delegated
+      - ./var/log/nginx:/var/log/nginx:delegated
       - ${DATA_SRC:-../src}:/var/www/html:cached
 
   mariadb:

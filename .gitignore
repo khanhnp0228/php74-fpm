@@ -3,5 +3,5 @@ datadir
 createdb.sql
 
 docker/nginx/templates/*.template
-docker/nginx/log/*
-!docker/nginx/log/.gitkeep
+var/log/nginx/*
+!var/log/nginx/.gitkeep
