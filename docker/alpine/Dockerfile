@@ -20,7 +20,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql \
 	&& docker-php-ext-enable pdo_mysql
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories
 RUN apk --no-cache add shadow
-RUN pecl install xdebug-3.1.5 \
-    && docker-php-ext-enable xdebug
+# RUN pecl install xdebug-3.1.5 \
+#     && docker-php-ext-enable xdebug
 RUN usermod -u 1000 www-data
 EXPOSE 9000
