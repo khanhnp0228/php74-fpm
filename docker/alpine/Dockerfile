@@ -28,7 +28,7 @@ RUN if [ $XDEBUG_ENABLE = "1" ] ; then \
 
         echo "[xdebug]" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
         echo "# For xdebug 3" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
-        echo "xdebug.mode=debug,develop,profile,trace" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
+        echo "xdebug.mode=debug,develop" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
         echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
         echo "xdebug.discover_client_host=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \
         echo "xdebug.log='/tmp/xdebug/xdebug.log'" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini; \

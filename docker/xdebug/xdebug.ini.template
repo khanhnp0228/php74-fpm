@@ -3,7 +3,7 @@ zend_extension=xdebug
 [xdebug]
 
 # For xdebug 3
-xdebug.mode=debug,develop,profile,trace
+xdebug.mode=debug,develop
 xdebug.start_with_request=yes
 xdebug.discover_client_host=1
 xdebug.log="/tmp/xdebug/xdebug.log"
