@@ -83,6 +83,12 @@ docker-compose run --rm wpcli user update [USERNAME] --user_pass=<CLEAR_PASSWORD
 docker-compose run --rm wpcli user search-replace '[OLD_STR]' '[NEW_STR]' --all-tables --path=[PROJECT_NAME]
 ```
 
+### WP-CLI: SHOW EVENT LIST (WP Cron)
+
+```
+docker-compose run --rm wpcli cron event list --path=[PROJECT_NAME]
+```
+
 ### WP-CLI: REGENERATE THUMBNAILS
 
 ```
