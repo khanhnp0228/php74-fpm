@@ -11,7 +11,10 @@ RUN apk add --no-cache $PHPIZE_DEPS openssl-dev \
     freetype-dev \
     libpng-dev \
     libjpeg-turbo-dev \
+    libzip-dev \
+    zip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install zip \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     docker-php-ext-install -j${NPROC} gd && \
     apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
