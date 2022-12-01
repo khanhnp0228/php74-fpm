@@ -41,6 +41,12 @@ docker-compose run --rm wpcli WPCLI_COMMANDS
 docker-compose run --rm wpcli --path=`path/to/wordpress` WPCLI_COMMANDS
 ```
 
+### WP-CLI: DOWNLOAD WORDPRESS SOURCECODE
+
+```
+docker-compose run --rm wpcli core download --version=[WP_VERSION] --path=[PROJECT_NAME]
+```
+
 ### WP-CLI: CREATE CONFIG FILE (wp-config.php)
 
 ```
