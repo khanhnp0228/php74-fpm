@@ -18,6 +18,8 @@ RUN apk add --no-cache $PHPIZE_DEPS openssl-dev \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     docker-php-ext-install -j${NPROC} gd && \
     apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+RUN apk add icu-dev \
+    && docker-php-ext-configure intl && docker-php-ext-install intl
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 #RUN composer self-update --1
 RUN docker-php-ext-install mysqli pdo pdo_mysql \
